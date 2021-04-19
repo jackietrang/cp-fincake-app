@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto</title>
+
+    <link rel="shortcut icon" href="static/img/favicon-32x32.png" type="image/png">
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- static\css\style.css -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <header class="header">
+        <div class="brand">
+            <p>Compound</p>
+            <!-- <img src="assets/img/logo.svg" alt="EasyBank" class="brand-img"> -->
+        </div>
+
+        <nav class="nav-menu" id="nav-menu">
+            <div class="menu">
+                <a href="#" class="menu-item">Home</a>
+                <a href="#" class="menu-item">About</a>
+                <a href="#" class="menu-item">Contact</a>
+                <a href="#" class="menu-item">Blog</a>
+            </div>
+        </nav>
+
+
+        <div class="group-button">
+            <form method= "GET" action="{{ url_for('signup') }}">
+                <button class="btn" href=signup>Sign up</button>
+            </form>
+            
+        </div>
+
+        <div class="btn-navigation">
+            <input id="menu-hamburguer" type="checkbox" />
+
+            <label for="menu-hamburguer">
+                <div class="menu">
+                    <span class="hamburguer"></span>
+                </div>
+            </label>
+        </div>
+    </header>
+
+
+    <div class="flex-container">
+        <p> Hi {{user_name}}. You're logged in successfully! We will update you with Compound development progress!</p>
+    </div>
+   
+</body>
+
+</html>
