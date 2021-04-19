@@ -7,11 +7,11 @@ import re
 
 # set up project directory
 project_dir = os.path.dirname(os.path.abspath(__file__))
-db_uri = "sqlite:///{}".format(os.path.join(project_dir, "database.db"))
+DATABASE_URL = "sqlite:///{}".format(os.path.join(project_dir, "database.db"))
 
 # set up flask app
 main = Flask(__name__, template_folder='./templates', static_folder='./static')
-main.config["SQLALCHEMY_DATABASE_URI"] = db_uri
+main.config["SQLALCHEMY_DATABASE_URL"] = DATABASE_URL
 main.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False 
 db = SQLAlchemy(main) 
 
