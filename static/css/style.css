@@ -39,7 +39,7 @@ button, .btn-submit{
     min-height: 36px;
     min-width: 130px;
     color: var(--Branco);
-    background: linear-gradient(to right, hsl(233, 26%, 24%), hsl(136, 65%, 51%));
+    background: linear-gradient(to right, var(--Azul-escuro), var(--Verde-Limão));
     font-weight: 700;
     font-size: 16px;
     cursor: pointer;
