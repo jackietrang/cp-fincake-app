@@ -1,1 +1,1 @@
-web: gunicorn "web:create_app()" -k eventlet
+web: gunicorn wsgi:app
