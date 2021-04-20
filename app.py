@@ -11,7 +11,7 @@ DATABASE_URL = "sqlite:///{}".format(os.path.join(project_dir, "database.db"))
 
 # set up flask app
 main = Flask(__name__, template_folder='./templates', static_folder='./static')
-main.config["SQLALCHEMY_DATABASE_URL"] = DATABASE_URL
+main.config["SQLALCHEMY_DATABASE_URI"] = DATABASE_URL
 main.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False 
 db = SQLAlchemy(main) 
 
