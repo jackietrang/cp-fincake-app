@@ -33,13 +33,13 @@ h2{font-size: 3em}
 h3{font-size: 2em}
 
 
-button{
+button, .btn-submit{
     border: 1px solid transparent;
     border-radius: 30px;
     min-height: 36px;
     min-width: 130px;
     color: var(--Branco);
-    background: linear-gradient(to right, var(--Azul-escuro), var(--Verde-Limão)) i !important;
+    background: linear-gradient(to right, hsl(233, 26%, 24%), hsl(136, 65%, 51%));
     font-weight: 700;
     font-size: 16px;
     cursor: pointer;
