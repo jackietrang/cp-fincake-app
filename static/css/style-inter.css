@@ -1,0 +1,72 @@
+#toggle1, #toggle2 {
+    -moz-transition: transform 1s;
+    -webkit-transition: transform 1s;
+    transition: transform 1s;
+  }
+  
+.flip {
+    transform: rotate(-180deg);
+  }
+
+/* why have summary-box tags */
+.tag-search-container {
+  z-index: -1;
+}
+
+#hidden {
+  display:none;
+}
+
+/* line style */
+connection {
+  border: 2px solid;
+  /* border-radius: 7em; */
+  color: #484c84;
+
+}
+
+/* -----Analytics page */
+.data-active {
+  background: #1D1F35 !important;
+  color: #BCBEDC !important;
+  
+}
+
+.data-inactive {
+  background: #d7d8ea !important;
+  color: #bcbedc !important;
+}
+
+.analysis-active {
+  background-color: #73dae8 !important;
+  color: #36395b !important;
+}
+
+#viz-add-event-btn {
+  position: absolute;
+  left: 80.95%;
+  right: 1.5%;
+  top: 66.8%;
+  bottom: 17.58%;
+  color: #484C84;
+  height: 20px;
+}
+
+/* -- Facilities Pop Up css */
+.current-controls-container,
+.controls-history-container,
+.alerts-container,
+.maintenance-reset-container {
+  position: absolute
+}
+
+.facilities-pop-up {
+  width: 45%;
+
+}
+
+.controls-history-container,
+.alerts-container,
+.maintenance-reset-container {
+  visibility: hidden;
+}

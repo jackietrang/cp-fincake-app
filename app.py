@@ -25,17 +25,23 @@ signin.login_view = 'signin'
 class User(UserMixin, db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
-    user_email = db.Column(db.String(100))
+    user_name = db.Column(db.String(100))
     password = db.Column(db.String(100))
+
+# class Score(db.Model):
+#     __tablename__ = 'scores'
+#     entry_score = db.Column(db.Integer)
+#     level1_score = db.Column(db.Integer)
+#     level2_score = db.Column(db.Integer)
 
 # create database
 db.create_all()
 db.session.commit()
 
-@main.route('/', methods=['GET', 'POST'])
+@main.route('/', methods=['GET'])
 def landing_page():
-    # redirect(url_for('signin'))
     return render_template('landing.html')
+
 @signin.user_loader
 def load_user(id):
     '''
@@ -62,20 +68,8 @@ def signup():
     if request.method == 'POST':
         # Checks password requirements
         password = request.form.get('password')
-        # password needs at least 1 number
-        if re.search('[0-9]', password) is None:
-            error_msg = "Password needs at least one number"
-            return render_template("signup.html", error=error_msg)
-        # password needs at least 1 letter
-        elif re.search('[a-z]', password) is None:
-            error_msg = "Password needs at least one letter"
-            return render_template("signup.html", error=error_msg)
-        # password and re-entered password match
-        if password != request.form.get('repeat'):
-            error_msg = "Password doesn't match"
-            return render_template("signup.html", error=error_msg)
-        user_email = request.form.get('user_email')
-        signup_user = User(user_email=user_email, password=password) # new instance of user
+        user_name = request.form.get('user_name')
+        signup_user = User(user_name=user_name, password=password) # new instance of user
         # add user login + password to db
         db.session.add(signup_user)
         db.session.commit()
@@ -87,19 +81,45 @@ def signup():
 @main.route('/signin', methods=['GET', 'POST'])
 def signin():
     if request.method == 'POST':
-        user_email = request.form.get('user_email')
         password = request.form.get('password')
         user_name = request.form.get('user_name')
-        user = User.query.filter_by(user_email=user_email, password=password).first()
-        # return user_name
+        user = User.query.filter_by(user_name=user_name, password=password).first()
         if user: 
             login_user(user)
-            if user_name != None:
-                return render_template('index.html', user_name=user_name)
-            else: 
-                return render_template('index.html', user_name =" there")
+            return redirect('/index')
+
     elif request.method == 'GET':
         return render_template('login.html')
+
+
+@main.route('/index', methods=['GET', 'POST'])
+def index():
+    return render_template('index.html')
+
+@main.route('/entry_test', methods=['GET'])
+def entry_test():
+    return render_template('entry_test.html')
+
+@main.route('/entry_test_flashcards', methods=['GET'])
+def entry_test_flashcards():
+    return render_template('entry_test_flash_cards.html')
+
+@main.route('/consumer_credit_flashcards', methods=['GET'])
+def consumer_credit_flashcards():
+    return render_template('flashcard/consumer_credit_flash_cards.html')
+
+@main.route('/consumer_credit_quiz', methods=['GET'])
+def consumer_credit_quiz():
+    return render_template('level1_consumer_credit_quiz.html')
+
+@main.route('/credit_factors_flashcards', methods=['GET'])
+def credit_factors_flashcards():
+    return render_template('credit_factors_flash_cards.html')
+
+@main.route('/credit_factors_quiz', methods=['GET'])
+def credit_factors_quiz():
+    return render_template('flashcard/credit_factors_quiz.html')
+
     
 if __name__ == "__main__":
     main.run(debug=True)
