@@ -228,8 +228,8 @@ function scoreRender() {
     // choose the image based on the scorePerCent
     let text =
         scorePerCent <= 80 ?
-        "There is some room for improvement. You should read <a href = 'consumer_credit_flashcards  '>Consumer Credit flashcards</a> to gain a stronger foundation" :
-        "You did it! Feel free to go to level 2 quizzes";
+        "There is some room for improvement. You should read <a href = 'consumer_credit_flashcards'>Consumer Credit flashcards</a> to gain a stronger foundation" :
+        "You did it! Feel free to go to Credit Factors quiz";
     scoreDiv.innerHTML += "<div class='level-rec'>" + text + "</div>";
     scoreDiv.innerHTML += "<p>" + scorePerCent + "%</p>";
 
