@@ -41,6 +41,12 @@ button {
     font-weight: 400;
 }
 
+.brand {
+    color: black;
+    font-size: 18px;
+    font-weight: 600;
+}
+
 h2 {
     font-size: 3em
 }
@@ -84,14 +90,20 @@ a {
     padding: 0 10%;
     height: 90px;
     width: 100%;
+    background-color: white;
 }
 
 .header .nav-menu .menu-item {
     font-size: 16px;
     font-weight: 300;
     margin: 0 10px;
-    text-decoration: none;
+    text-decoration: none !important;
     color: var(--Azul-acinzentado);
+}
+
+.header .nav-menu .menu-item:hover {
+    font-weight: 600;
+    color: black;
 }
 
 .header .group-button .btn {

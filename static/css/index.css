@@ -356,42 +356,6 @@ button:hover {
     /* margin-left: 70px; */
 }
 
-
-/* Header */
-
-.header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    padding: 0 10%;
-    height: 90px;
-    width: 100%;
-}
-
-.header .nav-menu .menu-item {
-    font-size: 16px;
-    font-weight: 300;
-    margin: 0 10px;
-    text-decoration: none;
-    color: var(--Azul-acinzentado);
-}
-
-.header .group-button .btn {
-    height: 44px;
-    width: 160px;
-}
-
-.header .btn-navigation {
-    display: none;
-}
-
-.current-page {
-    color: #50d1e2;
-    text-decoration: underline;
-}
-
 .tab-section {
     margin: 6px 20px;
 }
@@ -830,13 +794,6 @@ hr {
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-}
-
-.send-controls {
-    padding: 0 10px;
-    color: #e6e7f2;
-    text-decoration: underline;
-    white-space: nowrap;
 }
 
 .start-button {
@@ -3095,14 +3052,6 @@ hr {
     padding: 5px 15px;
 }
 
-.delete-button {
-    background: none;
-    border: none;
-    color: #E26464;
-    text-decoration: underline;
-    margin: 10px;
-}
-
 .data-upload-container {
     display: none;
     position: -webkit-sticky;
@@ -3133,11 +3082,6 @@ hr {
     height: 90%;
     text-align: center;
     margin: 0 30px 30px 30px;
-}
-
-.data-upload-background a {
-    text-decoration: underline;
-    font-weight: bold;
 }
 
 .data-upload-background p {
