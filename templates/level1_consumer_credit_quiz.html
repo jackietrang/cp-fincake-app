@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Fincake</title>
+    <link rel="shortcut icon" href="static/img/favicon-32x32.png" type="image/png">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/index.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/style.css') }}">
+</head>
+
+<body>
+    <header class="header">
+        <div class="brand">
+            <p>Fincake</p>
+        </div>
+        <nav class="nav-menu" id="nav-menu">
+            <div class="menu">
+                <a href="{{ url_for('landing_page') }}" class="menu-item">Home</a>
+                <a href="#" class="menu-item">About</a>
+                <a href="#" class="menu-item">My Progress</a>
+            </div>
+        </nav>
+    </header>
+
+    <div id="container">
+        <div id="start">Start Quiz!</div>
+        <div id="quiz" style="display: none">
+            <div id="question"></div>
+            <div id="qImg"></div>
+            <div id="choices">
+                <div class="choice" id="A" onclick="checkAnswer('A')"></div>
+                <div class="choice" id="B" onclick="checkAnswer('B')"></div>
+                <div class="choice" id="C" onclick="checkAnswer('C')"></div>
+                <div class="choice" id="D" onclick="checkAnswer('D')"></div>
+            </div>
+
+            <div id="timer" style="display: none">
+                <div id="counter"></div>
+                <div id="btimeGauge"></div>
+                <div id="timeGauge"></div>
+            </div>
+
+            <div id="progress"></div>
+        </div>
+
+        <div id="scoreContainer" style="display: none"></div>
+    </div>
+
+    <script src="{{ url_for('static',filename='js/level1_script.js') }}"></script>
+
+</body>
+
+</html>
