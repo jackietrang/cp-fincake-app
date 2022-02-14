@@ -15,7 +15,7 @@
 
 :root {
     --Azul-escuro: hsl(233, 26%, 24%);
-    --Verde-Limão: MediumTurquoise;
+    --Verde-Limão: hsl(136, 65%, 51%);
     --Ciano-brilhante: hsl(192, 70%, 51%);
     --Azul-acinzentado: hsl(233, 8%, 62%);
     --Azul-acinzentado-claro: hsl(220, 16%, 96%);
@@ -163,7 +163,6 @@ a {
     top: 0;
     height: 780px;
     width: 100%;
-    /* background-image: url('../img/image-mockups.png'); */
     background-position-y: -150px;
     background-position-x: 130px;
     background-repeat: no-repeat;

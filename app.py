@@ -102,7 +102,7 @@ def entry_test():
 
 @main.route('/entry_test_flashcards', methods=['GET'])
 def entry_test_flashcards():
-    return render_template('entry_test_flash_cards.html')
+    return render_template('flashcard/entry_test_flashcards.html')
 
 @main.route('/consumer_credit_flashcards', methods=['GET'])
 def consumer_credit_flashcards():
