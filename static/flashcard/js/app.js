@@ -91,7 +91,7 @@ $(document).delegate("#main-page", "pageinit", function() {
     $("#next-card").bind("click", function(event, ui) {
         home();
     });
-    $("#skip-card").bind("click", function(event, ui) {\
+    $("#skip-card").bind("click", function(event, ui) {
         nextCard();
     });
     $("#main-page").on("swipeleft", function(event) {
