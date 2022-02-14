@@ -83,11 +83,15 @@ $(document).delegate("#main-page", "pageinit", function() {
         }
     }
 
+    function home() {
+        window.location.href = "index";
+    }
+
 
     $("#next-card").bind("click", function(event, ui) {
-        nextCard();
+        home();
     });
-    $("#skip-card").bind("click", function(event, ui) {
+    $("#skip-card").bind("click", function(event, ui) {\
         nextCard();
     });
     $("#main-page").on("swipeleft", function(event) {
