@@ -196,4 +196,23 @@ function scoreRender() {
         "You seem to have a good financial literacy foundation! You can start the <a href = 'consumer_credit_quiz') }}'> Consumer Credit Quiz</a>.";
     scoreDiv.innerHTML += "<div class='level-rec'>" + text + "</div>";
     scoreDiv.innerHTML += "<p>" + scorePerCent + "%</p>;"
+
+    var server_data = [
+        { "score": score },
+        { "scorePercent": scorePerCent },
+        { "questionNum": questions.length }
+    ];
+
+    $.ajax({
+        type: "POST",
+        url: "/process_entry",
+        data: JSON.stringify(server_data),
+        contentType: "application/json",
+        dataType: 'json',
+        success: function(result) {
+            numRows.innerHTML = result.rows;
+        }
+    });
+
+    console.log('jackie')
 }

@@ -1,7 +1,7 @@
 import os
 from flask import Flask
 from flask_login import LoginManager, UserMixin, current_user, login_user, login_required, logout_user, login_manager
-from flask import Flask, render_template, redirect, url_for, request, g, session
+from flask import Flask, render_template, redirect, url_for, request, g, session, jsonify
 from flask_sqlalchemy import SQLAlchemy
 import re
 
@@ -23,17 +23,53 @@ signin.login_view = 'signin'
 
 # Initialize data table
 class User(UserMixin, db.Model):
-    __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
     user_name = db.Column(db.String(100))
     password = db.Column(db.String(100))
+    score_entry = db.relationship('ScoreEntry', backref='user', lazy=True)
+    score_level1 = db.relationship('ScoreLevel1', backref='user', lazy=True)
+    score_level2 = db.relationship('ScoreLevel2', backref='user', lazy=True)
 
-# class Score(db.Model):
-#     __tablename__ = 'scores'
-#     entry_score = db.Column(db.Integer)
-#     level1_score = db.Column(db.Integer)
-#     level2_score = db.Column(db.Integer)
+class ScoreEntry(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    score = db.Column('score', db.Integer)
+    score_percent = db.Column('score_percent', db.Integer)
+    question_num = db.Column('question_num', db.Integer)
+    user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
 
+    def __init__(self, score, score_percent, question_num, user_id):
+        self.score = score
+        self.score_percent = score_percent
+        self.question_num = question_num
+        self.user_id = user_id
+
+class ScoreLevel1(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    score = db.Column('score', db.Integer)
+    score_percent = db.Column('score_percent', db.Integer)
+    question_num = db.Column('question_num', db.Integer)
+    user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
+
+    def __init__(self, score, score_percent, question_num, user_id):
+        self.score = score
+        self.score_percent = score_percent
+        self.question_num = question_num
+        self.user_id = user_id
+
+class ScoreLevel2(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    score = db.Column('score', db.Integer)
+    score_percent = db.Column('score_percent', db.Integer)
+    question_num = db.Column('question_num', db.Integer)
+    user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
+
+    def __init__(self, score, score_percent, question_num, user_id):
+        self.score = score
+        self.score_percent = score_percent
+        self.question_num = question_num
+        self.user_id = user_id
+
+        
 # create database
 db.create_all()
 db.session.commit()
@@ -119,6 +155,39 @@ def credit_factors_flashcards():
 @main.route('/credit_factors_quiz', methods=['GET'])
 def credit_factors_quiz():
     return render_template('flashcard/credit_factors_quiz.html')
+
+@main.route('/my_progress', methods=['GET'])
+def my_progress():
+    score_entry = ScoreEntry.query.order_by(ScoreEntry.id.desc()).first()
+    score_level1 = ScoreLevel1.query.order_by(ScoreLevel1.id.desc()).first()
+    score_level2 = ScoreLevel2.query.order_by(ScoreLevel2.id.desc()).first()
+    return render_template('user_progress.html', user=current_user, score_entry=score_entry, score_level1=score_level1, score_level2=score_level2)
+
+@main.route('/process_score1', methods=['POST', 'GET'])
+def process_score1():
+  if request.method == "POST":
+    
+    data = request.get_json()
+    db.session.add(ScoreLevel1(data[0]['score'], data[1]['scorePercent'], data[2]['questionNum'], current_user.id))
+    db.session.commit()
+    rows = db.session.query(ScoreLevel1).count()
+  results = {'rows': rows}
+  print(results, "hiiii")
+  return jsonify(results)
+
+@main.route('/process_entry', methods=['POST', 'GET'])
+def process_entry():
+  if request.method == "POST":
+    data = request.get_json()
+    print(data, 'jackie_data')
+    db.session.add(ScoreEntry(data[0]['score'], data[1]['scorePercent'], data[2]['questionNum'], current_user.id))
+    db.session.commit()
+    rows = db.session.query(ScoreEntry).count()
+  results = {'entry_rows': rows}
+  print(results, "secondd")
+  return jsonify(results)
+
+
 
     
 if __name__ == "__main__":

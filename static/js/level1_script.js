@@ -220,6 +220,7 @@ function answerIsWrong() {
 
 // score render
 function scoreRender() {
+
     scoreDiv.style.display = "block";
 
     // calculate the amount of question percent answered by the user
@@ -233,4 +234,20 @@ function scoreRender() {
     scoreDiv.innerHTML += "<div class='level-rec'>" + text + "</div>";
     scoreDiv.innerHTML += "<p>" + scorePerCent + "%</p>";
 
+    var server_data = [
+        { "score": score },
+        { "scorePercent": scorePerCent },
+        { "questionNum": questions.length }
+    ];
+
+    $.ajax({
+        type: "POST",
+        url: "/process_score1",
+        data: JSON.stringify(server_data),
+        contentType: "application/json",
+        dataType: 'json',
+        success: function(result) {
+            numRows.innerHTML = result.rows;
+        }
+    });
 }
