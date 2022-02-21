@@ -170,10 +170,6 @@ def process_score1():
     data = request.get_json()
     db.session.add(ScoreLevel1(data[0]['score'], data[1]['scorePercent'], data[2]['questionNum'], current_user.id))
     db.session.commit()
-    rows = db.session.query(ScoreLevel1).count()
-  results = {'rows': rows}
-  print(results, "hiiii")
-  return jsonify(results)
 
 @main.route('/process_entry', methods=['POST', 'GET'])
 def process_entry():
@@ -182,13 +178,6 @@ def process_entry():
     print(data, 'jackie_data')
     db.session.add(ScoreEntry(data[0]['score'], data[1]['scorePercent'], data[2]['questionNum'], current_user.id))
     db.session.commit()
-    rows = db.session.query(ScoreEntry).count()
-  results = {'entry_rows': rows}
-  print(results, "secondd")
-  return jsonify(results)
-
-
-
     
 if __name__ == "__main__":
     main.run(debug=True)
