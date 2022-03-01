@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Retirement Planning Knowledge</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static',filename='flashcard/css/jquery.mobile-1.2.0.min.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='flashcard/css/app.css') }}">
+
+    <link type="image/x-icon" href="favicon.ico" rel="SHORTCUT ICON" />
+    <link rel="apple-touch-icon" href="images/appicon.png" />
+
+    <script src="{{ url_for('static',filename='flashcard/js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='flashcard/js/jquery.mobile-1.2.0.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='flashcard/js/showdown.js') }}"></script>
+    <script src="{{ url_for('static',filename='flashcard/js/cards_level2.js') }}"></script>
+    <script src="{{ url_for('static',filename='flashcard/js/app.js') }}"></script>
+
+</head>
+
+<body>
+    <div data-role="page" id="title-page">
+        <div data-role="content">
+            <div id="logo-text" class="text-color"><span id="app-title"></span></div>
+            <div id="logo-subtext" class="text-color">Flashcards</div>
+            <div id="catch-phrase" class="text-color"><span id="app-catch-phrase"></span></div>
+            <a href="#main-page" data-role="button" data-transition="flip">Let's get started</a>
+        </div>
+    </div>
+
+    <div data-role="page" id="main-page">
+        <div data-role="header">
+            <a href="{{ url_for('retirement_planning_flashcards') }}" data-icon="refresh">Restart</a>
+            <h1>Retirement Planning Flashcards</h1>
+            <a id="next-card" data-icon="arrow-r" data-theme="b" data-transition="flip">Home</a>
+        </div>
+        <div data-role="content">
+            <div data-role="collapsible-set" data-theme="c" data-content-theme="d" class="ui-collapsible-set ui-corner-all">
+                <div id="flash-card" data-role="collapsible" class="ui-collapsible ui-collapsible-inset ui-collapsible-themed-content ui-first-child ui-collapsible-collapsed" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d">
+                    <h3 class="ui-collapsible-heading ui-collapsible-heading-collapsed">
+                        <p id="question"></p>
+                    </h3>
+                    <p id="answer"></p>
+                </div>
+            </div>
+            <a id="skip-card" data-role="button" data-mini="true">Next</a>
+        </div>
+    </div>
+
+    <div data-role="page" id="fork-this-page">
+        <div data-role="header">
+            <a href="#title-page" data-icon="arrow-l" data-theme="b" data-transition="fade">Back</a>
+            <h1>Retirement Planning Flashcards</h1>
+        </div>
+    </div>
+
+    <div data-role="page" id="resources-page">
+        <div data-role="header">
+            <a href="{{ url_for('retirement_planning_flashcards') }}" data-icon="refresh">Restart</a>
+        </div>
+        <div data-role="content">
+            <p>Congrats you've made it through the deck! You can go back to the landing page</a> try a quiz</p>
+        </div>
+    </div>
+
+</body>
+
+</html>

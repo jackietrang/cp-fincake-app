@@ -142,19 +142,19 @@ def entry_test_flashcards():
 
 @main.route('/consumer_credit_flashcards', methods=['GET'])
 def consumer_credit_flashcards():
-    return render_template('flashcard/consumer_credit_flash_cards.html')
+    return render_template('flashcard/level1_consumer_credit_flashcards.html')
 
 @main.route('/consumer_credit_quiz', methods=['GET'])
 def consumer_credit_quiz():
     return render_template('level1_consumer_credit_quiz.html')
 
-@main.route('/credit_factors_flashcards', methods=['GET'])
-def credit_factors_flashcards():
-    return render_template('credit_factors_flash_cards.html')
+@main.route('/retirement_planning_flashcards', methods=['GET'])
+def retirement_planning_flashcards():
+    return render_template('flashcard/level2_retirement_planning_flashcards.html')
 
-@main.route('/credit_factors_quiz', methods=['GET'])
-def credit_factors_quiz():
-    return render_template('flashcard/credit_factors_quiz.html')
+@main.route('/retirement_planning_quiz', methods=['GET'])
+def retirement_planning_quiz():
+    return render_template('level2_retirement_planning_quiz.html')
 
 @main.route('/my_progress', methods=['GET'])
 def my_progress():
@@ -163,14 +163,6 @@ def my_progress():
     score_level2 = ScoreLevel2.query.order_by(ScoreLevel2.id.desc()).first()
     return render_template('user_progress.html', user=current_user, score_entry=score_entry, score_level1=score_level1, score_level2=score_level2)
 
-@main.route('/process_score1', methods=['POST', 'GET'])
-def process_score1():
-  if request.method == "POST":
-    
-    data = request.get_json()
-    db.session.add(ScoreLevel1(data[0]['score'], data[1]['scorePercent'], data[2]['questionNum'], current_user.id))
-    db.session.commit()
-
 @main.route('/process_entry', methods=['POST', 'GET'])
 def process_entry():
   if request.method == "POST":
@@ -178,6 +170,22 @@ def process_entry():
     print(data, 'jackie_data')
     db.session.add(ScoreEntry(data[0]['score'], data[1]['scorePercent'], data[2]['questionNum'], current_user.id))
     db.session.commit()
+
+@main.route('/process_score1', methods=['POST', 'GET'])
+def process_score1():
+  if request.method == "POST":
+    data = request.get_json()
+    db.session.add(ScoreLevel1(data[0]['score'], data[1]['scorePercent'], data[2]['questionNum'], current_user.id))
+    db.session.commit()
+
+@main.route('/process_score2', methods=['POST', 'GET'])
+def process_score2():
+  if request.method == "POST":
+    data = request.get_json()
+    db.session.add(ScoreLevel2(data[0]['score'], data[1]['scorePercent'], data[2]['questionNum'], current_user.id))
+    db.session.commit()
+
+
     
 if __name__ == "__main__":
     main.run(debug=True)
