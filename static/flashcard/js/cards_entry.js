@@ -1,5 +1,5 @@
 flashcardDeck = {
-    title: "Entry Test Flashcards",
+    title: "Entry Quiz Flashcards",
     catchPhrase: "Financial literacy made simple",
     cards: [{
             "question": "A profit is a positive return or money made on an investment or venture",

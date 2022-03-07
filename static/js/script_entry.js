@@ -37,7 +37,7 @@ var questions = [{
         question: "Suppose you had $100 in a savings account and the interest rate was 2% per year. After 5 years, how much do you think you would have in the account if you left the money to grow?",
         imgSrc: "https://cdn.glitch.me/d28052bc-296a-4014-84f9-de6bfc690091%2FInvestment-policy_800x450_0.jpeg?v=1638925399070",
         choiceA: "More than $102",
-        choiceB: "Exactly $102;",
+        choiceB: "Exactly $102",
         choiceC: "Less than $102",
         choiceD: "Do not know",
         correct: "A"
