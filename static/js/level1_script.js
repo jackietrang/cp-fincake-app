@@ -131,9 +131,9 @@ var questions = [{
         choiceA: "A person's likeliness to have more than 1 credit cards",
         choiceB: "A rating of how much benefit a credit cards has compared to its counterparts from different companies",
         choiceC: "A rating of how much benefit a credit cards has compared to its counterparts from the same company",
-        choiceD: "a person's ability to make credit payments on time",
+        choiceD: "A person's ability to make credit payments on time",
 
-        correct: "A"
+        correct: "D"
     },
 ];
 
