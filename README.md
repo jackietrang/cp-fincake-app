@@ -10,13 +10,13 @@ git --version
 2. Clone the repo to a "local" directory (on your computer), 
 
 ```
-git clone https://github.com/minerva-schools/cs162-minerva-notification
+git clone https://github.com/jackietrang/cp-fincake-app.git
 ```
 
 then change into the directory
 
 ```
-cd cs162-minerva-notification
+cd cp-fincake-app
 ```
 
 3. To make sure everything is up to date on your end, run
@@ -25,28 +25,6 @@ cd cs162-minerva-notification
 git pull
 ```
 
-4. Always create a branch for any new task
-
-```
-git checkout -b [name-of-branch]
-```
-
-5. If you are using Visual Studio Code to contribute, you can use
-
-```
-code .
-```
-
-and make your contributions in the branch you have created.
-
-6. Save all changes in Visual Studio Code, then run
-
-```
-git add .
-git status
-git commit -m "A clear message about contribution"
-git push
-```
 
 ## Run Virtual Environment
 
