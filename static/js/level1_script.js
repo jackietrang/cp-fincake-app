@@ -172,8 +172,7 @@ function startQuiz() {
     renderQuestion();
     quiz.style.display = "block";
     renderProgress();
-    //   renderCounter();
-    //   TIMER = setInterval(renderCounter, 1000); // 1000ms = 1s
+    console.log("Start quiz")
 }
 
 // render progress
