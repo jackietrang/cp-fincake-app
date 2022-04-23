@@ -186,7 +186,7 @@ def process_score2():
     db.session.commit()
 
 
-    
+# run the app
 if __name__ == "__main__":
     main.run(debug=True)
 
